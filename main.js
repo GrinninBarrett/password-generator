@@ -9,13 +9,6 @@ let criteriaChoices = {
 };
 
 
-
-
-
-
-
-
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
@@ -25,7 +18,10 @@ function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
     
-    passwordText.value = password;
+    //Adds condition to be sure this text box never shows the text "undefined"
+    if (password !== undefined) {
+        passwordText.value = password;
+    }
 }
 
 // Gather user criteria and generate password
@@ -45,7 +41,7 @@ function generatePassword() {
     
     if ((isNaN(passwordLength)) || ((passwordLength < 8) || (passwordLength > 128))) {
         alert("Try again - be sure to enter a number from 8 to 128");
-        generatePassword();
+        return;
     } else {
         //Determine which criteria the user wants to include
         useLowers = confirm(`Would you like your password to use lowercase letters? (OK if yes - Cancel if no)`);
@@ -57,7 +53,7 @@ function generatePassword() {
     //Adds chosen criteria to an empty object
     if ((useLowers !== true) && (useUppers !== true) && (useNumbers !== true) && (useSpecials !== true)) {
         alert("Start over - you must choose at least one criterion!");
-        generatePassword();
+        return;
     }
     if (useLowers === true) {
         criteriaToUse.lowers = criteriaChoices.lowercase;
@@ -76,9 +72,6 @@ function generatePassword() {
     for (item in criteriaToUse) {
         chosenCriteria.push(`${criteriaToUse[item]}`);
     }
-
-    console.log(chosenCriteria);
-    console.log(chosenCriteria.length);
 
     //Checks whether the user chose multiple criteria, and if not, avoids choosing a random character type
     if (chosenCriteria.length > 1) {
@@ -109,35 +102,3 @@ function generatePassword() {
     
     return finishedPassword;
 }
-
-
-
-
-/*function allSelectedCriteria() {
-    for each value (an array) in the criteria object {
-        if user has selected this criteria {
-            for each character in that array {
-                push that character into the allCriteria array
-            }
-        }
-    }
-    return allCriteria array
-}
-*/
-
-// for (let i = 0; i < numString.length; i++) {
-//     allCriteria.push(numString[i]);
-// }
-
-// console.log(allCriteria);
-
-// for (let i = 0; i < uppercaseArr.length; i++) {
-//     allCriteria.push(uppercaseArr[i]);
-// }
-
-// for (let i = 0; i < 5; i++) {
-//     nextChar = allCriteria[Math.floor(Math.random() * allCriteria.length)];
-//     newPassword.push(nextChar);
-// }
-
-// console.log(newPassword);
