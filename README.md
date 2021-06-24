@@ -10,4 +10,4 @@ This was a really fun assignment that I was actually able to finish in one (rath
 ![Screenshot of Tucker's completed Password Generator](images/finished-password-generator.png "Tucker's completed Password Generator")
 
 ## Link to deployed application:
-[Tucker Barrett's Horiseon](http://grinninbarrett.github.io/password-generator "Tucker's deployed password generator application")
+[Tucker Barrett's Password Generator](http://grinninbarrett.github.io/password-generator "Tucker's deployed password generator application")
